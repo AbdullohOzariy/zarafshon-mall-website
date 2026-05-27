@@ -1,270 +1,333 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useLang } from "@/lib/LangContext";
+
+const floorImages = ["/floor-minus1.png", "/floor-1.svg", "/floor-2.svg", "/floor-3.png"];
 
 export default function Floors() {
   const { t } = useLang();
   const [active, setActive] = useState(0);
-
-  const floorColors = ["#6B5B4E", "#4A7C5E", "#4A6B7C", "#7C4A6B"];
+  const item = t.floors.items[active];
 
   return (
-    <section
-      id="floors"
-      style={{
-        padding: "120px 24px",
-        background: "#1A1A1A",
-      }}
-    >
-      <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+    <section id="floors" className="floors-section">
+      <div className="floors-container">
+
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 64 }}>
-          <p
-            style={{
-              color: "#B08D57",
-              fontSize: 12,
-              fontWeight: 700,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              marginBottom: 16,
-            }}
-          >
-            ZARAFSHON MALL
-          </p>
-          <h2
-            style={{
-              fontSize: "clamp(28px, 4vw, 48px)",
-              fontWeight: 700,
-              color: "#F5F0E8",
-              letterSpacing: "-0.02em",
-              marginBottom: 16,
-            }}
-          >
-            {t.floors.title}
-          </h2>
-          <p style={{ color: "rgba(245,240,232,0.5)", fontSize: 16, maxWidth: 480, margin: "0 auto" }}>
-            {t.floors.subtitle}
-          </p>
+        <div className="floors-header">
+          <p className="floors-eyebrow">ZARAFSHON MALL</p>
+          <h2 className="floors-title">{t.floors.title}</h2>
+          <p className="floors-subtitle">{t.floors.subtitle}</p>
         </div>
 
-        {/* Floor Visual */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 32,
-            alignItems: "start",
-          }}
-          className="floors-grid"
-        >
-          {/* Left: Floor selector */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-            {t.floors.items.map((item, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 20,
-                  padding: "20px 24px",
-                  borderRadius: 12,
-                  border: active === i
-                    ? "1px solid rgba(176,141,87,0.6)"
-                    : "1px solid rgba(176,141,87,0.1)",
-                  background: active === i
-                    ? "rgba(176,141,87,0.1)"
-                    : "rgba(255,255,255,0.02)",
-                  cursor: "pointer",
-                  transition: "all 0.25s",
-                  textAlign: "left",
-                  width: "100%",
-                }}
-                onMouseEnter={(e) => {
-                  if (active !== i) {
-                    e.currentTarget.style.background = "rgba(176,141,87,0.05)";
-                    e.currentTarget.style.borderColor = "rgba(176,141,87,0.25)";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (active !== i) {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.02)";
-                    e.currentTarget.style.borderColor = "rgba(176,141,87,0.1)";
-                  }
-                }}
-              >
-                <span style={{ fontSize: 28 }}>{item.icon}</span>
-                <div>
-                  <div
-                    style={{
-                      color: active === i ? "#C9A96E" : "#F5F0E8",
-                      fontWeight: 700,
-                      fontSize: 15,
-                      marginBottom: 4,
-                      letterSpacing: "0.01em",
-                    }}
-                  >
-                    {item.floor}
-                  </div>
-                  <div
-                    style={{
-                      color: "rgba(245,240,232,0.45)",
-                      fontSize: 13,
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {item.description}
-                  </div>
-                </div>
-                {active === i && (
-                  <div
-                    style={{
-                      marginLeft: "auto",
-                      width: 6,
-                      height: 6,
-                      borderRadius: "50%",
-                      background: "#B08D57",
-                      flexShrink: 0,
-                    }}
-                  />
-                )}
-              </button>
-            ))}
+        {/* Tab bar */}
+        <div className="floors-tabs">
+          {t.floors.items.map((fl, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              className={`floors-tab${active === i ? " floors-tab--active" : ""}`}
+            >
+              <span className="floors-tab-icon">{fl.icon}</span>
+              <span className="floors-tab-label">{fl.floor}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Content: image left, info right */}
+        <div className="floors-content">
+          {/* Floor plan image */}
+          <div className="floors-image-wrap">
+            <div className="floors-image-badge">{item.icon} {item.floor}</div>
+            <Image
+              key={active}
+              src={floorImages[active]}
+              alt={item.floor}
+              width={800}
+              height={560}
+              className="floors-image"
+            />
           </div>
 
-          {/* Right: Detail card */}
-          <div
-            style={{
-              position: "sticky",
-              top: 100,
-              padding: "40px",
-              borderRadius: 16,
-              border: "1px solid rgba(176,141,87,0.2)",
-              background: "linear-gradient(135deg, rgba(176,141,87,0.07) 0%, rgba(255,255,255,0.02) 100%)",
-            }}
-          >
-            {/* Floor visual indicator */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column-reverse",
-                gap: 4,
-                marginBottom: 32,
-              }}
-            >
-              {t.floors.items.map((item, i) => (
-                <div
-                  key={i}
-                  style={{
-                    height: 36,
-                    borderRadius: 6,
-                    background: active === i
-                      ? `rgba(176,141,87,0.4)`
-                      : "rgba(255,255,255,0.04)",
-                    border: active === i
-                      ? "1px solid rgba(176,141,87,0.5)"
-                      : "1px solid rgba(255,255,255,0.06)",
-                    display: "flex",
-                    alignItems: "center",
-                    padding: "0 12px",
-                    transition: "all 0.3s",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => setActive(i)}
-                >
-                  <span style={{ fontSize: 14, marginRight: 8 }}>{item.icon}</span>
-                  <span
-                    style={{
-                      fontSize: 12,
-                      color: active === i ? "#C9A96E" : "rgba(245,240,232,0.3)",
-                      fontWeight: 600,
-                    }}
+          {/* Info panel */}
+          <div className="floors-info">
+            <h3 className="floors-info-title">{item.floor}</h3>
+            <p className="floors-info-desc">{item.description}</p>
+
+            <div className="floors-tags">
+              {item.tags.map((tag, i) => (
+                <span key={i} className="floors-tag">{tag}</span>
+              ))}
+            </div>
+
+            {/* Floor number indicator */}
+            <div className="floors-levels">
+              {[...t.floors.items].reverse().map((fl, ri) => {
+                const idx = t.floors.items.length - 1 - ri;
+                return (
+                  <div
+                    key={ri}
+                    className={`floors-level${active === idx ? " floors-level--active" : ""}`}
+                    onClick={() => setActive(idx)}
                   >
-                    {item.floor}
-                  </span>
-                </div>
-              ))}
+                    <span className="floors-level-icon">{fl.icon}</span>
+                    <span className="floors-level-name">{fl.floor}</span>
+                  </div>
+                );
+              })}
             </div>
 
-            <div style={{ fontSize: 40, marginBottom: 16 }}>
-              {t.floors.items[active].icon}
-            </div>
-            <h3
-              style={{
-                fontSize: 22,
-                fontWeight: 700,
-                color: "#C9A96E",
-                marginBottom: 12,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              {t.floors.items[active].floor}
-            </h3>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.65)",
-                fontSize: 15,
-                lineHeight: 1.7,
-                marginBottom: 24,
-              }}
-            >
-              {t.floors.items[active].description}
-            </p>
-
-            {/* Tags */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {t.floors.items[active].tags.map((tag, i) => (
-                <span
-                  key={i}
-                  style={{
-                    padding: "5px 14px",
-                    borderRadius: 100,
-                    border: "1px solid rgba(176,141,87,0.35)",
-                    color: "#B08D57",
-                    fontSize: 12,
-                    fontWeight: 600,
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            <div
-              style={{
-                marginTop: 32,
-                paddingTop: 24,
-                borderTop: "1px solid rgba(176,141,87,0.15)",
-              }}
-            >
-              <a
-                href="#contact"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  color: "#B08D57",
-                  textDecoration: "none",
-                  fontSize: 14,
-                  fontWeight: 600,
-                }}
-              >
-                Bu qavatda joy bron qilish
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
+            <a href="#contact" className="floors-cta">
+              Bu qavatda joy bron qilish
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
-          .floors-grid {
-            grid-template-columns: 1fr !important;
+        .floors-section {
+          padding: 120px 24px;
+          background: #141414;
+        }
+        .floors-container {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        /* Header */
+        .floors-header {
+          text-align: center;
+          margin-bottom: 56px;
+        }
+        .floors-eyebrow {
+          color: #B08D57;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+          margin-bottom: 14px;
+        }
+        .floors-title {
+          font-size: clamp(28px, 4vw, 48px);
+          font-weight: 700;
+          color: #F5F0E8;
+          letter-spacing: -0.02em;
+          margin-bottom: 14px;
+        }
+        .floors-subtitle {
+          color: rgba(245,240,232,0.45);
+          font-size: 16px;
+          max-width: 460px;
+          margin: 0 auto;
+          line-height: 1.6;
+        }
+
+        /* Tabs */
+        .floors-tabs {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 32px;
+          background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(176,141,87,0.12);
+          border-radius: 14px;
+          padding: 6px;
+        }
+        .floors-tab {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 12px 16px;
+          border-radius: 10px;
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          transition: all 0.2s;
+          color: rgba(245,240,232,0.45);
+          font-size: 13px;
+          font-weight: 600;
+          white-space: nowrap;
+        }
+        .floors-tab:hover {
+          background: rgba(176,141,87,0.07);
+          color: rgba(245,240,232,0.75);
+        }
+        .floors-tab--active {
+          background: rgba(176,141,87,0.15);
+          border: 1px solid rgba(176,141,87,0.35) !important;
+          color: #C9A96E !important;
+        }
+        .floors-tab-icon {
+          font-size: 18px;
+        }
+        .floors-tab-label {
+          font-size: 13px;
+        }
+
+        /* Content grid */
+        .floors-content {
+          display: grid;
+          grid-template-columns: 1.4fr 1fr;
+          gap: 28px;
+          align-items: start;
+        }
+
+        /* Image */
+        .floors-image-wrap {
+          position: relative;
+          border-radius: 16px;
+          overflow: hidden;
+          border: 1px solid rgba(176,141,87,0.18);
+          background: rgba(255,255,255,0.97);
+          min-height: 360px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .floors-image-badge {
+          position: absolute;
+          top: 14px;
+          left: 14px;
+          z-index: 2;
+          background: rgba(20,20,20,0.82);
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(176,141,87,0.3);
+          color: #C9A96E;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.03em;
+          padding: 6px 12px;
+          border-radius: 8px;
+        }
+        .floors-image {
+          width: 100%;
+          height: auto;
+          display: block;
+          object-fit: contain;
+        }
+
+        /* Info panel */
+        .floors-info {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          padding: 32px;
+          border-radius: 16px;
+          border: 1px solid rgba(176,141,87,0.15);
+          background: linear-gradient(160deg, rgba(176,141,87,0.06) 0%, rgba(255,255,255,0.01) 100%);
+        }
+        .floors-info-title {
+          font-size: 24px;
+          font-weight: 700;
+          color: #C9A96E;
+          letter-spacing: -0.01em;
+          margin: 0;
+        }
+        .floors-info-desc {
+          color: rgba(245,240,232,0.6);
+          font-size: 15px;
+          line-height: 1.7;
+          margin: 0;
+        }
+
+        /* Tags */
+        .floors-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+        .floors-tag {
+          padding: 5px 14px;
+          border-radius: 100px;
+          border: 1px solid rgba(176,141,87,0.3);
+          color: #B08D57;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 0.04em;
+        }
+
+        /* Floor level list */
+        .floors-levels {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          border-radius: 10px;
+          overflow: hidden;
+          border: 1px solid rgba(176,141,87,0.1);
+        }
+        .floors-level {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 14px;
+          cursor: pointer;
+          transition: background 0.18s;
+          background: rgba(255,255,255,0.02);
+          border-bottom: 1px solid rgba(176,141,87,0.07);
+        }
+        .floors-level:last-child {
+          border-bottom: none;
+        }
+        .floors-level:hover {
+          background: rgba(176,141,87,0.06);
+        }
+        .floors-level--active {
+          background: rgba(176,141,87,0.12) !important;
+        }
+        .floors-level-icon {
+          font-size: 15px;
+        }
+        .floors-level-name {
+          font-size: 12px;
+          font-weight: 600;
+          color: rgba(245,240,232,0.5);
+        }
+        .floors-level--active .floors-level-name {
+          color: #C9A96E;
+        }
+
+        /* CTA */
+        .floors-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          color: #B08D57;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 600;
+          padding-top: 16px;
+          border-top: 1px solid rgba(176,141,87,0.12);
+          transition: gap 0.2s;
+        }
+        .floors-cta:hover {
+          gap: 12px;
+          color: #C9A96E;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+          .floors-content {
+            grid-template-columns: 1fr;
+          }
+          .floors-tab-label {
+            display: none;
+          }
+          .floors-tab {
+            padding: 12px;
+          }
+        }
+        @media (max-width: 540px) {
+          .floors-section {
+            padding: 80px 16px;
+          }
+          .floors-info {
+            padding: 24px 20px;
           }
         }
       `}</style>

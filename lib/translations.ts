@@ -12,10 +12,10 @@ export const translations = {
     },
     hero: {
       badge: "2026-yil sentabr — Grand Opening",
-      title: "Zarafshon Mallda",
-      titleHighlight: "brendingizga joy bor",
+      title: "Brendingiz uchun yangi bozor —",
+      titleHighlight: "Zarafshon shahri",
       subtitle:
-        "Zarafshon shahridagi 4 qavatli zamonaviy savdo va ko'ngilochar markazi. B2B hamkorlik uchun eng qulay shart-sharoitlar.",
+        "Biznesingizni zamonaviy darajaga olib chiqing.",
       cta: "Hamkorlik taklifi",
       ctaSecondary: "Ko'proq ma'lumot",
       address: "Zarafshon shahri, 13-kichik tuman, 104a",
@@ -179,10 +179,10 @@ export const translations = {
     },
     hero: {
       badge: "Сентябрь 2026 — Большое открытие",
-      title: "В Zarafshon Mall",
-      titleHighlight: "есть место для вашего бренда",
+      title: "Новый рынок для вашего бренда —",
+      titleHighlight: "город Зарафшан",
       subtitle:
-        "Современный 4-этажный торгово-развлекательный центр в городе Зарафшан. Лучшие условия для B2B партнёрства.",
+        "Выведите свой бизнес на современный уровень.",
       cta: "Предложение о сотрудничестве",
       ctaSecondary: "Узнать больше",
       address: "г. Зарафшан, 13-й микрорайон, 104а",
