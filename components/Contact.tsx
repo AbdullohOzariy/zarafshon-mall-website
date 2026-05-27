@@ -70,6 +70,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
+      className="contact-section"
       style={{
         padding: "120px 24px",
         background: "#212121",
@@ -194,6 +195,7 @@ export default function Contact() {
 
           {/* Right: Form */}
           <div
+            className="contact-form"
             style={{
               padding: "40px",
               borderRadius: 16,
@@ -374,12 +376,23 @@ export default function Contact() {
 
       <style>{`
         @media (max-width: 768px) {
+          .contact-section {
+            padding: 80px 16px;
+          }
           .contact-grid {
             grid-template-columns: 1fr !important;
             gap: 48px !important;
           }
           .form-grid {
             grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .contact-form {
+            padding: 24px 20px !important;
+          }
+          .contact-grid {
+            gap: 36px !important;
           }
         }
         @keyframes spin {

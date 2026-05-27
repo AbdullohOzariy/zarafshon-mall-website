@@ -15,6 +15,17 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   const navLinks = [
     { href: "#floors", label: t.nav.floors },
     { href: "#conditions", label: t.nav.conditions },
@@ -65,56 +76,70 @@ export default function Navbar() {
 
         {/* Mobile burger */}
         <button
-          className="navbar-burger"
+          className={`navbar-burger${menuOpen ? " navbar-burger--open" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
+          aria-label={menuOpen ? "Menyuni yopish" : "Menyuni ochish"}
+          aria-expanded={menuOpen}
         >
-          {menuOpen ? (
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          ) : (
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          )}
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            className="burger-icon burger-icon--menu"
+          >
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            className="burger-icon burger-icon--close"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="mobile-menu">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="mobile-link"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
-          <div className="mobile-footer">
-            <div className="lang-switcher">
-              {(["uz", "ru"] as const).map((l) => (
-                <button
-                  key={l}
-                  onClick={() => setLang(l)}
-                  className={`lang-btn${lang === l ? " lang-btn--active" : ""}`}
-                >
-                  {l.toUpperCase()}
-                </button>
-              ))}
-            </div>
-            <a href="#contact" className="navbar-cta" onClick={() => setMenuOpen(false)}>
-              {t.nav.apply}
-            </a>
+      {/* Mobile menu — always in DOM, shown via class toggle */}
+      <div className={`mobile-menu${menuOpen ? " mobile-menu--open" : ""}`}>
+        {navLinks.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className="mobile-link"
+            onClick={() => setMenuOpen(false)}
+          >
+            {link.label}
+          </a>
+        ))}
+        <div className="mobile-footer">
+          <div className="lang-switcher">
+            {(["uz", "ru"] as const).map((l) => (
+              <button
+                key={l}
+                onClick={() => setLang(l)}
+                className={`lang-btn${lang === l ? " lang-btn--active" : ""}`}
+              >
+                {l.toUpperCase()}
+              </button>
+            ))}
           </div>
+          <a href="#contact" className="navbar-cta" onClick={() => setMenuOpen(false)}>
+            {t.nav.apply}
+          </a>
         </div>
-      )}
+      </div>
 
       <style>{`
         .navbar {
@@ -223,26 +248,63 @@ export default function Navbar() {
           border: none;
           cursor: pointer;
           color: #F5F0E8;
-          padding: 4px;
+          padding: 10px;
+          margin: -6px;
           margin-left: auto;
+          position: relative;
+          width: 42px;
+          height: 42px;
+          align-items: center;
+          justify-content: center;
+        }
+        .burger-icon {
+          position: absolute;
+          transition: opacity 0.2s, transform 0.2s;
+        }
+        .burger-icon--menu {
+          opacity: 1;
+          transform: rotate(0deg);
+        }
+        .burger-icon--close {
+          opacity: 0;
+          transform: rotate(-90deg);
+        }
+        .navbar-burger--open .burger-icon--menu {
+          opacity: 0;
+          transform: rotate(90deg);
+        }
+        .navbar-burger--open .burger-icon--close {
+          opacity: 1;
+          transform: rotate(0deg);
         }
 
-        /* Mobile menu */
+        /* Mobile menu — always in DOM, transition via max-height */
         .mobile-menu {
           background: rgba(14,14,14,0.98);
-          border-top: 1px solid rgba(176,141,87,0.15);
-          padding: 8px 28px 24px;
+          border-top: 1px solid transparent;
+          padding: 0 28px;
           display: flex;
           flex-direction: column;
           gap: 2px;
+          max-height: 0;
+          overflow: hidden;
+          opacity: 0;
+          transition: max-height 0.32s ease, opacity 0.24s ease, border-color 0.24s, padding 0.24s;
+        }
+        .mobile-menu--open {
+          max-height: 500px;
+          opacity: 1;
+          border-top-color: rgba(176,141,87,0.15);
+          padding: 8px 28px 24px;
         }
         .mobile-link {
           color: rgba(245,240,232,0.75);
           text-decoration: none;
           font-size: 15px;
           font-weight: 500;
-          padding: 13px 0;
+          padding: 16px 0;
           border-bottom: 1px solid rgba(176,141,87,0.08);
+          display: block;
         }
         .mobile-footer {
           display: flex;

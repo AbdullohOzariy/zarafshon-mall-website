@@ -22,14 +22,7 @@ export default function Stats() {
   const { ref, inView } = useInView();
 
   return (
-    <section
-      style={{
-        background: "linear-gradient(135deg, #1A1A1A 0%, #2C2C2C 100%)",
-        borderTop: "1px solid rgba(176,141,87,0.15)",
-        borderBottom: "1px solid rgba(176,141,87,0.15)",
-        padding: "80px 24px",
-      }}
-    >
+    <section className="stats-section">
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         <p
           style={{
@@ -47,10 +40,8 @@ export default function Stats() {
 
         <div
           ref={ref}
+          className="stats-grid"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: 1,
             background: "rgba(176,141,87,0.1)",
             borderRadius: 12,
             overflow: "hidden",
@@ -59,9 +50,9 @@ export default function Stats() {
           {t.stats.items.map((item, i) => (
             <div
               key={i}
+              className="stats-item"
               style={{
                 background: "#1A1A1A",
-                padding: "48px 32px",
                 textAlign: "center",
                 transition: "background 0.3s",
               }}
@@ -105,6 +96,34 @@ export default function Stats() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        .stats-section {
+          background: linear-gradient(135deg, #1A1A1A 0%, #2C2C2C 100%);
+          border-top: 1px solid rgba(176,141,87,0.15);
+          border-bottom: 1px solid rgba(176,141,87,0.15);
+          padding: 80px 24px;
+        }
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 2px;
+        }
+        .stats-item {
+          padding: 48px 32px;
+        }
+        @media (max-width: 480px) {
+          .stats-section {
+            padding: 60px 16px;
+          }
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .stats-item {
+            padding: 28px 16px;
+          }
+        }
+      `}</style>
     </section>
   );
 }

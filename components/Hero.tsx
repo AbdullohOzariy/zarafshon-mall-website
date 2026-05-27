@@ -30,6 +30,7 @@ export default function Hero() {
 
   return (
     <section
+      className="hero-section"
       style={{
         position: "relative",
         minHeight: "100vh",
@@ -272,6 +273,12 @@ export default function Hero() {
         @keyframes pulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.4; }
+        }
+        @media (max-width: 480px) {
+          .hero-section {
+            min-height: 100svh;
+            padding-top: 80px;
+          }
         }
       `}</style>
     </section>

@@ -340,23 +340,42 @@ export default function Floors() {
         }
 
         /* Responsive */
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
           .floors-content {
             grid-template-columns: 1fr;
           }
-          .floors-tab-label {
+        }
+        @media (max-width: 768px) {
+          .floors-tabs {
+            overflow-x: auto;
+            flex-wrap: nowrap;
+            scrollbar-width: none;
+          }
+          .floors-tabs::-webkit-scrollbar {
             display: none;
           }
           .floors-tab {
-            padding: 12px;
+            flex: 0 0 auto;
+          }
+          .floors-levels {
+            display: none;
           }
         }
-        @media (max-width: 540px) {
-          .floors-section {
-            padding: 80px 16px;
+        @media (max-width: 480px) {
+          .floors-tab-label {
+            font-size: 12px;
+          }
+          .floors-tab {
+            padding: 10px 12px;
+          }
+          .floors-image-wrap {
+            min-height: 220px;
           }
           .floors-info {
-            padding: 24px 20px;
+            padding: 20px;
+          }
+          .floors-section {
+            padding: 80px 16px;
           }
         }
       `}</style>

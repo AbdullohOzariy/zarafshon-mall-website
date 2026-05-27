@@ -177,12 +177,12 @@ export default function Advantages() {
           line-height: 1.7;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
           .adv-grid {
             grid-template-columns: repeat(2, 1fr);
           }
         }
-        @media (max-width: 560px) {
+        @media (max-width: 600px) {
           .adv-grid {
             grid-template-columns: 1fr;
           }
@@ -190,7 +190,16 @@ export default function Advantages() {
             padding: 80px 16px;
           }
           .adv-card {
-            padding: 32px 24px;
+            padding: 28px 20px;
+          }
+        }
+        @media (max-width: 480px) {
+          .adv-card {
+            padding: 28px 16px;
+          }
+          .adv-card::after {
+            left: 16px;
+            right: 16px;
           }
         }
       `}</style>

@@ -42,6 +42,7 @@ export default function Conditions() {
   return (
     <section
       id="conditions"
+      className="conditions-section"
       style={{
         padding: "120px 24px",
         background: "#212121",
@@ -80,6 +81,7 @@ export default function Conditions() {
 
         {/* Cards grid */}
         <div
+          className="conditions-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
@@ -210,6 +212,14 @@ export default function Conditions() {
           </a>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 480px) {
+          .conditions-section {
+            padding: 80px 16px;
+          }
+        }
+      `}</style>
     </section>
   );
 }
