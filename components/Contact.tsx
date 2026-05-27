@@ -23,6 +23,27 @@ export default function Contact() {
     setSubmitted(true);
   };
 
+  const iconBoxStyle: React.CSSProperties = {
+    width: 44,
+    height: 44,
+    borderRadius: 10,
+    background: "rgba(176,141,87,0.1)",
+    border: "1px solid rgba(176,141,87,0.2)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+  };
+
+  const labelSmallStyle: React.CSSProperties = {
+    color: "rgba(245,240,232,0.38)",
+    fontSize: 11,
+    fontWeight: 700,
+    letterSpacing: "0.1em",
+    textTransform: "uppercase",
+    marginBottom: 3,
+  };
+
   const inputStyle: React.CSSProperties = {
     width: "100%",
     padding: "14px 16px",
@@ -102,74 +123,33 @@ export default function Contact() {
             </p>
 
             {/* Contact details */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+
               {/* Address */}
-              <div style={{ display: "flex", gap: 16 }}>
-                <div
-                  style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: 10,
-                    background: "rgba(176,141,87,0.12)",
-                    border: "1px solid rgba(176,141,87,0.2)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                  }}
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B08D57" strokeWidth="2">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                    <circle cx="12" cy="10" r="3" />
+              <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                <div style={iconBoxStyle}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B08D57" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z"/>
+                    <circle cx="12" cy="9" r="2.5"/>
                   </svg>
                 </div>
                 <div>
-                  <div style={{ color: "rgba(245,240,232,0.4)", fontSize: 12, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>
-                    {lang_label("Manzil", "Адрес")}
-                  </div>
-                  <div style={{ color: "#F5F0E8", fontSize: 15 }}>
-                    {t.contact.info.address}
-                  </div>
+                  <div style={labelSmallStyle}>Manzil</div>
+                  <div style={{ color: "#F5F0E8", fontSize: 15, lineHeight: 1.5 }}>{t.contact.info.address}</div>
                 </div>
               </div>
 
               {/* Phones */}
-              <div style={{ display: "flex", gap: 16 }}>
-                <div
-                  style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: 10,
-                    background: "rgba(176,141,87,0.12)",
-                    border: "1px solid rgba(176,141,87,0.2)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                  }}
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B08D57" strokeWidth="2">
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.27-.542a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+              <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                <div style={iconBoxStyle}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B08D57" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.8 19.79 19.79 0 0 1 .22 1.18 2 2 0 0 1 2.18 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L6.91 7.91a16 16 0 0 0 6.09 6.09l1.27-.54a2 2 0 0 1 2.11.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
                   </svg>
                 </div>
                 <div>
-                  <div style={{ color: "rgba(245,240,232,0.4)", fontSize: 12, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>
-                    Telefon
-                  </div>
+                  <div style={labelSmallStyle}>Telefon</div>
                   {t.contact.info.phones.map((phone, i) => (
-                    <a
-                      key={i}
-                      href={`tel:${phone.replace(/\s/g, "")}`}
-                      style={{
-                        display: "block",
-                        color: "#C9A96E",
-                        fontSize: 15,
-                        textDecoration: "none",
-                        fontWeight: 600,
-                        letterSpacing: "0.02em",
-                        lineHeight: 1.8,
-                      }}
-                    >
+                    <a key={i} href={`tel:${phone.replace(/\s/g, "")}`} style={{ display: "block", color: "#C9A96E", fontSize: 15, textDecoration: "none", fontWeight: 600, lineHeight: 1.8 }}>
                       {phone}
                     </a>
                   ))}
@@ -177,37 +157,38 @@ export default function Contact() {
               </div>
 
               {/* Email */}
-              <div style={{ display: "flex", gap: 16 }}>
-                <div
-                  style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: 10,
-                    background: "rgba(176,141,87,0.12)",
-                    border: "1px solid rgba(176,141,87,0.2)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                  }}
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B08D57" strokeWidth="2">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                    <polyline points="22,6 12,13 2,6" />
+              <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+                <div style={iconBoxStyle}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B08D57" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                   </svg>
                 </div>
                 <div>
-                  <div style={{ color: "rgba(245,240,232,0.4)", fontSize: 12, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>
-                    Email
-                  </div>
-                  <a
-                    href={`mailto:${t.contact.info.email}`}
-                    style={{ color: "#C9A96E", fontSize: 15, textDecoration: "none", fontWeight: 600 }}
-                  >
+                  <div style={labelSmallStyle}>Email</div>
+                  <a href={`mailto:${t.contact.info.email}`} style={{ color: "#C9A96E", fontSize: 15, textDecoration: "none", fontWeight: 600 }}>
                     {t.contact.info.email}
                   </a>
                 </div>
               </div>
+
+              {/* Website */}
+              <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+                <div style={iconBoxStyle}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B08D57" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 2a14.5 14.5 0 0 1 0 20A14.5 14.5 0 0 1 12 2"/>
+                    <path d="M2 12h20"/>
+                  </svg>
+                </div>
+                <div>
+                  <div style={labelSmallStyle}>Website</div>
+                  <a href={`https://${t.contact.info.website}`} target="_blank" rel="noreferrer" style={{ color: "#C9A96E", fontSize: 15, textDecoration: "none", fontWeight: 600 }}>
+                    {t.contact.info.website}
+                  </a>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -410,6 +391,3 @@ export default function Contact() {
   );
 }
 
-function lang_label(uz: string, ru: string) {
-  return uz;
-}
