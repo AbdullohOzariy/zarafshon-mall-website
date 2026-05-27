@@ -6,6 +6,35 @@ import { useLang } from "@/lib/LangContext";
 
 const floorImages = ["/floor-minus1.png", "/floor-1.svg", "/floor-2.svg", "/floor-3.png"];
 
+const floorIcons = [
+  // Podval (-1): sofa / home furnishing
+  <svg key="0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 10V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3"/>
+    <path d="M3 10a2 2 0 0 0-2 2v3h22v-3a2 2 0 0 0-2-2H3Z"/>
+    <path d="M5 15v3m14-3v3"/>
+  </svg>,
+  // 1-qavat: shopping bag
+  <svg key="1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+    <path d="M3 6h18"/>
+    <path d="M16 10a4 4 0 0 1-8 0"/>
+  </svg>,
+  // 2-qavat: clothes hanger
+  <svg key="2" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20.38 18H3.62a1 1 0 0 1-.7-1.71L12 8"/>
+    <path d="M12 8V5"/>
+    <path d="M10 5a2 2 0 1 1 4 0"/>
+  </svg>,
+  // 3-qavat: game controller
+  <svg key="3" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="6" y1="12" x2="10" y2="12"/>
+    <line x1="8" y1="10" x2="8" y2="14"/>
+    <line x1="15" y1="13" x2="15.01" y2="13"/>
+    <line x1="18" y1="11" x2="18.01" y2="11"/>
+    <rect x="2" y="8" width="20" height="10" rx="4"/>
+  </svg>,
+];
+
 export default function Floors() {
   const { t } = useLang();
   const [active, setActive] = useState(0);
@@ -30,7 +59,7 @@ export default function Floors() {
               onClick={() => setActive(i)}
               className={`floors-tab${active === i ? " floors-tab--active" : ""}`}
             >
-              <span className="floors-tab-icon">{fl.icon}</span>
+              <span className="floors-tab-icon">{floorIcons[i]}</span>
               <span className="floors-tab-label">{fl.floor}</span>
             </button>
           ))}
@@ -40,7 +69,7 @@ export default function Floors() {
         <div className="floors-content">
           {/* Floor plan image */}
           <div className="floors-image-wrap">
-            <div className="floors-image-badge">{item.icon} {item.floor}</div>
+            <div className="floors-image-badge">{floorIcons[active]} {item.floor}</div>
             <Image
               key={active}
               src={floorImages[active]}
@@ -72,7 +101,7 @@ export default function Floors() {
                     className={`floors-level${active === idx ? " floors-level--active" : ""}`}
                     onClick={() => setActive(idx)}
                   >
-                    <span className="floors-level-icon">{fl.icon}</span>
+                    <span className="floors-level-icon">{floorIcons[idx]}</span>
                     <span className="floors-level-name">{fl.floor}</span>
                   </div>
                 );
