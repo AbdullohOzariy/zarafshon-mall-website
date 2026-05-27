@@ -23,233 +23,238 @@ export default function Navbar() {
   ];
 
   return (
-    <header
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
-        transition: "all 0.3s ease",
-        background: scrolled
-          ? "rgba(26,26,26,0.97)"
-          : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(176,141,87,0.2)" : "none",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 1280,
-          margin: "0 auto",
-          padding: "0 24px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          height: scrolled ? 64 : 80,
-          transition: "height 0.3s ease",
-        }}
-      >
+    <header className={`navbar${scrolled ? " navbar--scrolled" : ""}`}>
+      <div className="navbar-inner">
         {/* Logo */}
-        <a href="#" style={{ display: "flex", alignItems: "center" }}>
+        <a href="#" className="navbar-logo">
           <Image
             src="/logo.svg"
             alt="Zarafshon Mall"
             width={180}
             height={40}
-            style={{ height: 36, width: "auto", filter: "invert(1) sepia(1) saturate(2) hue-rotate(10deg) brightness(0.85)" }}
+            style={{ height: 34, width: "auto", filter: "invert(1) sepia(1) saturate(2) hue-rotate(10deg) brightness(0.85)" }}
           />
         </a>
 
-        {/* Desktop Nav */}
-        <nav
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 32,
-          }}
-          className="hidden-mobile"
-        >
+        {/* Desktop nav */}
+        <nav className="navbar-links">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              style={{
-                color: "rgba(245,240,232,0.75)",
-                textDecoration: "none",
-                fontSize: 14,
-                fontWeight: 500,
-                letterSpacing: "0.02em",
-                transition: "color 0.2s",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "#B08D57")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.color = "rgba(245,240,232,0.75)")
-              }
-            >
+            <a key={link.href} href={link.href} className="navbar-link">
               {link.label}
             </a>
           ))}
-
-          {/* Lang switcher */}
-          <div style={{ display: "flex", gap: 4 }}>
-            {(["uz", "ru"] as const).map((l) => (
-              <button
-                key={l}
-                onClick={() => setLang(l)}
-                style={{
-                  padding: "4px 10px",
-                  borderRadius: 4,
-                  border: lang === l ? "1px solid #B08D57" : "1px solid rgba(176,141,87,0.3)",
-                  background: lang === l ? "rgba(176,141,87,0.15)" : "transparent",
-                  color: lang === l ? "#B08D57" : "rgba(245,240,232,0.5)",
-                  fontSize: 12,
-                  fontWeight: 600,
-                  letterSpacing: "0.08em",
-                  cursor: "pointer",
-                  transition: "all 0.2s",
-                  textTransform: "uppercase",
-                }}
-              >
-                {l}
-              </button>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <a
-            href="#contact"
-            style={{
-              padding: "10px 20px",
-              background: "linear-gradient(135deg, #B08D57, #C9A96E)",
-              color: "#1A1A1A",
-              textDecoration: "none",
-              borderRadius: 6,
-              fontSize: 13,
-              fontWeight: 700,
-              letterSpacing: "0.03em",
-              transition: "opacity 0.2s, transform 0.2s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.opacity = "0.9";
-              e.currentTarget.style.transform = "translateY(-1px)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.opacity = "1";
-              e.currentTarget.style.transform = "translateY(0)";
-            }}
-          >
-            {t.nav.apply}
-          </a>
         </nav>
 
-        {/* Mobile: lang + burger */}
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }} className="show-mobile">
-          <div style={{ display: "flex", gap: 4 }}>
+        {/* Right side: lang + CTA */}
+        <div className="navbar-right">
+          <div className="lang-switcher">
             {(["uz", "ru"] as const).map((l) => (
               <button
                 key={l}
                 onClick={() => setLang(l)}
-                style={{
-                  padding: "3px 8px",
-                  borderRadius: 4,
-                  border: lang === l ? "1px solid #B08D57" : "1px solid rgba(176,141,87,0.3)",
-                  background: lang === l ? "rgba(176,141,87,0.15)" : "transparent",
-                  color: lang === l ? "#B08D57" : "rgba(245,240,232,0.5)",
-                  fontSize: 11,
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  textTransform: "uppercase",
-                }}
+                className={`lang-btn${lang === l ? " lang-btn--active" : ""}`}
               >
-                {l}
+                {l.toUpperCase()}
               </button>
             ))}
           </div>
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: 4,
-              color: "#F5F0E8",
-            }}
-          >
-            {menuOpen ? (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            ) : (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </svg>
-            )}
-          </button>
+          <a href="#contact" className="navbar-cta">
+            {t.nav.apply}
+          </a>
         </div>
+
+        {/* Mobile burger */}
+        <button
+          className="navbar-burger"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Menu"
+        >
+          {menuOpen ? (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          ) : (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          )}
+        </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       {menuOpen && (
-        <div
-          style={{
-            background: "rgba(26,26,26,0.98)",
-            borderTop: "1px solid rgba(176,141,87,0.2)",
-            padding: "16px 24px 24px",
-            display: "flex",
-            flexDirection: "column",
-            gap: 4,
-          }}
-          className="show-mobile"
-        >
+        <div className="mobile-menu">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
+              className="mobile-link"
               onClick={() => setMenuOpen(false)}
-              style={{
-                color: "rgba(245,240,232,0.8)",
-                textDecoration: "none",
-                fontSize: 16,
-                fontWeight: 500,
-                padding: "12px 0",
-                borderBottom: "1px solid rgba(176,141,87,0.1)",
-              }}
             >
               {link.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setMenuOpen(false)}
-            style={{
-              marginTop: 16,
-              padding: "14px 20px",
-              background: "linear-gradient(135deg, #B08D57, #C9A96E)",
-              color: "#1A1A1A",
-              textDecoration: "none",
-              borderRadius: 6,
-              fontSize: 15,
-              fontWeight: 700,
-              textAlign: "center",
-            }}
-          >
-            {t.nav.apply}
-          </a>
+          <div className="mobile-footer">
+            <div className="lang-switcher">
+              {(["uz", "ru"] as const).map((l) => (
+                <button
+                  key={l}
+                  onClick={() => setLang(l)}
+                  className={`lang-btn${lang === l ? " lang-btn--active" : ""}`}
+                >
+                  {l.toUpperCase()}
+                </button>
+              ))}
+            </div>
+            <a href="#contact" className="navbar-cta" onClick={() => setMenuOpen(false)}>
+              {t.nav.apply}
+            </a>
+          </div>
         </div>
       )}
 
       <style>{`
-        .hidden-mobile { display: flex; }
-        .show-mobile { display: none; }
+        .navbar {
+          position: fixed;
+          top: 0; left: 0; right: 0;
+          z-index: 100;
+          transition: background 0.3s, border-color 0.3s, height 0.3s;
+          border-bottom: 1px solid transparent;
+        }
+        .navbar--scrolled {
+          background: rgba(18,18,18,0.96);
+          backdrop-filter: blur(14px);
+          border-bottom-color: rgba(176,141,87,0.18);
+        }
+        .navbar-inner {
+          max-width: 1280px;
+          margin: 0 auto;
+          padding: 0 28px;
+          display: flex;
+          align-items: center;
+          gap: 40px;
+          height: 72px;
+          transition: height 0.3s;
+        }
+        .navbar--scrolled .navbar-inner {
+          height: 62px;
+        }
+        .navbar-logo {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+          text-decoration: none;
+        }
+        .navbar-links {
+          display: flex;
+          align-items: center;
+          gap: 28px;
+          flex: 1;
+        }
+        .navbar-link {
+          color: rgba(245,240,232,0.65);
+          text-decoration: none;
+          font-size: 13.5px;
+          font-weight: 500;
+          letter-spacing: 0.02em;
+          transition: color 0.2s;
+          white-space: nowrap;
+        }
+        .navbar-link:hover { color: #C9A96E; }
+
+        .navbar-right {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          flex-shrink: 0;
+        }
+
+        /* Lang switcher */
+        .lang-switcher {
+          display: flex;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(176,141,87,0.2);
+          border-radius: 8px;
+          overflow: hidden;
+        }
+        .lang-btn {
+          padding: 5px 12px;
+          background: transparent;
+          border: none;
+          color: rgba(245,240,232,0.4);
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          cursor: pointer;
+          transition: all 0.18s;
+        }
+        .lang-btn:hover { color: rgba(245,240,232,0.75); }
+        .lang-btn--active {
+          background: rgba(176,141,87,0.2);
+          color: #C9A96E;
+        }
+
+        /* CTA */
+        .navbar-cta {
+          padding: 9px 20px;
+          background: linear-gradient(135deg, #B08D57, #C9A96E);
+          color: #111;
+          text-decoration: none;
+          border-radius: 8px;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          white-space: nowrap;
+          transition: opacity 0.2s, transform 0.2s;
+          display: inline-block;
+        }
+        .navbar-cta:hover {
+          opacity: 0.88;
+          transform: translateY(-1px);
+        }
+
+        /* Burger — hidden on desktop */
+        .navbar-burger {
+          display: none;
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: #F5F0E8;
+          padding: 4px;
+          margin-left: auto;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+          background: rgba(14,14,14,0.98);
+          border-top: 1px solid rgba(176,141,87,0.15);
+          padding: 8px 28px 24px;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+        .mobile-link {
+          color: rgba(245,240,232,0.75);
+          text-decoration: none;
+          font-size: 15px;
+          font-weight: 500;
+          padding: 13px 0;
+          border-bottom: 1px solid rgba(176,141,87,0.08);
+        }
+        .mobile-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 16px;
+        }
+
         @media (max-width: 768px) {
-          .hidden-mobile { display: none !important; }
-          .show-mobile { display: flex !important; }
+          .navbar-links { display: none; }
+          .navbar-right { display: none; }
+          .navbar-burger { display: flex; }
         }
       `}</style>
     </header>
