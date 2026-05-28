@@ -13,7 +13,7 @@ export const translations = {
     hero: {
       badge: "2026-yil sentabr — Grand Opening",
       title: "Zarafshon Mall",
-      titleHighlight: "Biznesingiz uchunbiz bilan yangi sahifa.",
+      titleHighlight: "Biz bilan yangi sahifa oching.",
       subtitle:
         "Shahardagi eng yirik savdo markazi.",
       cta: "Hamkorlik taklifi",
@@ -180,7 +180,7 @@ export const translations = {
     hero: {
       badge: "Сентябрь 2026 — Большое открытие",
       title: "Zarafshon Mall",
-      titleHighlight: "Для вашего бизнеса новая страница с нами.",
+      titleHighlight: "Откройте новую страницу с нами.",
       subtitle:
         "Крупнейший торговый центр города.",
       cta: "Предложение о сотрудничестве",
