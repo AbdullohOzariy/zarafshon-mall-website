@@ -84,13 +84,14 @@ export default function Conditions() {
           className="conditions-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(3, 1fr)",
             gap: 16,
           }}
         >
           {t.conditions.items.map((item, i) => (
             <div
               key={i}
+              className="conditions-card"
               style={{
                 padding: "32px",
                 borderRadius: 12,
@@ -214,9 +215,22 @@ export default function Conditions() {
       </div>
 
       <style>{`
+        @media (max-width: 768px) {
+          .conditions-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px;
+          }
+        }
         @media (max-width: 480px) {
           .conditions-section {
             padding: 80px 16px;
+          }
+          .conditions-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px;
+          }
+          .conditions-card {
+            padding: 20px 16px !important;
           }
         }
       `}</style>

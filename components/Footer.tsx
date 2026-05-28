@@ -48,10 +48,6 @@ export default function Footer() {
             >
               {t.footer.tagline}
             </p>
-            <p style={{ color: "rgba(245,240,232,0.25)", fontSize: 12 }}>
-              {t.footer.company}
-            </p>
-
             {/* Social links */}
             <div style={{ display: "flex", gap: 12, marginTop: 24 }}>
               {[
