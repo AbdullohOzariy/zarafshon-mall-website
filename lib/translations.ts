@@ -3,8 +3,8 @@ export type Lang = "uz" | "ru";
 export const translations = {
   uz: {
     nav: {
-      about: "Markaz haqida",
       floors: "Qavatlar",
+      gallery: "Galereya",
       conditions: "Shartlar",
       advantages: "Afzalliklar",
       contact: "Aloqa",
@@ -170,8 +170,8 @@ export const translations = {
 
   ru: {
     nav: {
-      about: "О центре",
       floors: "Этажи",
+      gallery: "Галерея",
       conditions: "Условия",
       advantages: "Преимущества",
       contact: "Контакты",

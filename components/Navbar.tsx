@@ -28,6 +28,7 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "#floors", label: t.nav.floors },
+    { href: "#gallery", label: t.nav.gallery },
     { href: "#conditions", label: t.nav.conditions },
     { href: "#advantages", label: t.nav.advantages },
     { href: "#contact", label: t.nav.contact },
