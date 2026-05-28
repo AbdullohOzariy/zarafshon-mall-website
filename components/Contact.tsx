@@ -7,7 +7,7 @@ export default function Contact() {
   const { t } = useLang();
   const [form, setForm] = useState({
     name: "",
-    phone: "",
+    phone: "+998 ",
     category: "",
     area: "",
     message: "",
@@ -276,9 +276,16 @@ export default function Contact() {
                     <input
                       type="tel"
                       required
-                      placeholder={t.contact.form.phonePlaceholder}
+                      placeholder="+998 XX XXX-XX-XX"
                       value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        if (!val.startsWith("+998")) {
+                          setForm({ ...form, phone: "+998 " });
+                        } else {
+                          setForm({ ...form, phone: val });
+                        }
+                      }}
                       style={inputStyle}
                       onFocus={(e) => (e.target.style.borderColor = "#B08D57")}
                       onBlur={(e) => (e.target.style.borderColor = "rgba(176,141,87,0.2)")}
