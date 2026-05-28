@@ -136,7 +136,8 @@ export default function Hero() {
               color: "#F5F0E8",
             }}
           >
-            {t.hero.title}{" "}
+            {t.hero.title}
+            <br />
             <span
               style={{
                 background: "linear-gradient(135deg, #B08D57, #C9A96E, #B08D57)",
