@@ -15,7 +15,7 @@ export const translations = {
       title: "Biznesingizni zamonaviy darajaga",
       titleHighlight: "olib chiqing.",
       subtitle:
-        "Shahardagi eng yirik savdo markazi.",
+        "Zarafshon Mall - Biznesingiz uchun biz bilan yangi sahifa.",
       cta: "Hamkorlik taklifi",
       ctaSecondary: "Ko'proq ma'lumot",
       address: "Zarafshon shahri, 13-kichik tuman, 104a",
@@ -182,7 +182,7 @@ export const translations = {
       title: "Выведите свой бизнес на",
       titleHighlight: "современный уровень.",
       subtitle:
-        "Крупнейший торговый центр города.",
+        "Zarafshon Mall - новая страница для вашего бизнеса вместе с нами.",
       cta: "Предложение о сотрудничестве",
       ctaSecondary: "Узнать больше",
       address: "г. Зарафшан, 13-й микрорайон, 104а",
