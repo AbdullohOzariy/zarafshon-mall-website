@@ -86,10 +86,10 @@ export default function Gallery() {
       </div>
 
       {/* Row 1 — left to right */}
-      <ScrollRow images={row1Images} speed={45} />
+      <ScrollRow images={row1Images} speed={90} />
 
       {/* Row 2 — right to left */}
-      <ScrollRow images={row2Images} reverse speed={45} />
+      <ScrollRow images={row2Images} reverse speed={90} />
 
       <style>{`
         .gallery-section {
