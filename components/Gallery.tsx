@@ -3,23 +3,20 @@
 import Image from "next/image";
 import { useLang } from "@/lib/LangContext";
 
-const exteriorImages = [
+const allImages = [
   "/gallery/ext-1.jpg",
-  "/gallery/ext-2.jpg",
-  "/gallery/ext-3.jpg",
-  "/gallery/ext-4.jpg",
-  "/gallery/ext-5.jpg",
-];
-
-const interiorImages = [
   "/gallery/int-1.jpg",
   "/gallery/int-2.jpg",
+  "/gallery/ext-2.jpg",
   "/gallery/int-3.jpg",
   "/gallery/int-4.jpg",
+  "/gallery/ext-3.jpg",
   "/gallery/int-5.jpg",
   "/gallery/int-6.jpg",
+  "/gallery/ext-4.jpg",
   "/gallery/int-7.jpg",
   "/gallery/int-8.jpg",
+  "/gallery/ext-5.jpg",
   "/gallery/int-9.jpg",
   "/gallery/int-10.jpg",
   "/gallery/int-11.jpg",
@@ -31,6 +28,10 @@ const interiorImages = [
   "/gallery/int-17.jpeg",
   "/gallery/int-18.png",
 ];
+
+const mid = Math.ceil(allImages.length / 2);
+const row1Images = allImages.slice(0, mid);
+const row2Images = allImages.slice(mid);
 
 function ScrollRow({
   images,
@@ -84,11 +85,11 @@ export default function Gallery() {
         </p>
       </div>
 
-      {/* Row 1 — exterior (left to right) */}
-      <ScrollRow images={exteriorImages} speed={30} />
+      {/* Row 1 — left to right */}
+      <ScrollRow images={row1Images} speed={45} />
 
-      {/* Row 2 — interior (right to left) */}
-      <ScrollRow images={interiorImages} reverse speed={55} />
+      {/* Row 2 — right to left */}
+      <ScrollRow images={row2Images} reverse speed={45} />
 
       <style>{`
         .gallery-section {
