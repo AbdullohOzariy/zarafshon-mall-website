@@ -156,36 +156,40 @@ export default function Footer() {
             >
               {t.contact.info.title}
             </h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <div style={{ color: "rgba(245,240,232,0.45)", fontSize: 13, lineHeight: 1.5 }}>
-                📍 {t.contact.info.address}
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 10, color: "rgba(245,240,232,0.45)", fontSize: 13, lineHeight: 1.5 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B08D57" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 1 }}>
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z"/>
+                  <circle cx="12" cy="9" r="2.5"/>
+                </svg>
+                {t.contact.info.address}
               </div>
               {t.contact.info.phones.map((p, i) => (
-                <a
-                  key={i}
-                  href={`tel:${p.replace(/\s/g, "")}`}
-                  style={{ color: "#C9A96E", fontSize: 13, textDecoration: "none" }}
-                >
-                  📱 {p}
+                <a key={i} href={`tel:${p.replace(/\s/g, "")}`} style={{ display: "flex", alignItems: "center", gap: 10, color: "#C9A96E", fontSize: 13, textDecoration: "none" }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B08D57" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.8 19.79 19.79 0 0 1 .22 1.18 2 2 0 0 1 2.18 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L6.91 7.91a16 16 0 0 0 6.09 6.09l1.27-.54a2 2 0 0 1 2.11.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  {p}
                 </a>
               ))}
-              <a
-                href={`mailto:${t.contact.info.email}`}
-                style={{ color: "rgba(245,240,232,0.45)", fontSize: 13, textDecoration: "none" }}
+              <a href={`mailto:${t.contact.info.email}`} style={{ display: "flex", alignItems: "center", gap: 10, color: "rgba(245,240,232,0.45)", fontSize: 13, textDecoration: "none" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "#B08D57")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,240,232,0.45)")}
-              >
-                ✉️ {t.contact.info.email}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,240,232,0.45)")}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B08D57" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+                {t.contact.info.email}
               </a>
-              <a
-                href="https://zarafshonmall.uz"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "rgba(245,240,232,0.45)", fontSize: 13, textDecoration: "none" }}
+              <a href={`https://${t.contact.info.website}`} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 10, color: "rgba(245,240,232,0.45)", fontSize: 13, textDecoration: "none" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "#B08D57")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,240,232,0.45)")}
-              >
-                🌐 {t.contact.info.website}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,240,232,0.45)")}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B08D57" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 2a14.5 14.5 0 0 1 0 20A14.5 14.5 0 0 1 12 2"/>
+                  <path d="M2 12h20"/>
+                </svg>
+                {t.contact.info.website}
               </a>
             </div>
           </div>
