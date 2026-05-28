@@ -163,7 +163,7 @@ export const translations = {
     },
     footer: {
       tagline: "Savdo va Ko'ngilochar Markazi",
-      rights: "© 2024 Zarafshon Mall. Barcha huquqlar himoyalangan.",
+      rights: "© 2026 Zarafshon Mall. Barcha huquqlar himoyalangan.",
       company: "MODERN TRADING SERVICE MChJ",
     },
   },
@@ -327,7 +327,7 @@ export const translations = {
     },
     footer: {
       tagline: "Торгово-развлекательный центр",
-      rights: "© 2024 Zarafshon Mall. Все права защищены.",
+      rights: "© 2026 Zarafshon Mall. Все права защищены.",
       company: "ООО «MODERN TRADING SERVICE»",
     },
   },
