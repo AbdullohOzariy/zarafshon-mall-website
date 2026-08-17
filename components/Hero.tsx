@@ -75,7 +75,8 @@ export default function Hero() {
           top: 0,
           bottom: 0,
           width: 4,
-          background: "linear-gradient(to bottom, transparent, #B08D57, transparent)",
+          background:
+            "linear-gradient(to bottom, transparent, #B08D57, transparent)",
         }}
       />
 
@@ -140,7 +141,8 @@ export default function Hero() {
             <br />
             <span
               style={{
-                background: "linear-gradient(135deg, #B08D57, #C9A96E, #B08D57)",
+                background:
+                  "linear-gradient(135deg, #B08D57, #C9A96E, #B08D57)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -184,20 +186,29 @@ export default function Hero() {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 8px 32px rgba(176,141,87,0.4)";
+                e.currentTarget.style.boxShadow =
+                  "0 8px 32px rgba(176,141,87,0.4)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 4px 24px rgba(176,141,87,0.3)";
+                e.currentTarget.style.boxShadow =
+                  "0 4px 24px rgba(176,141,87,0.3)";
               }}
             >
               {t.hero.cta}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
             <a
-              href="#floors"
+              href="#gallery"
               style={{
                 padding: "16px 32px",
                 border: "1px solid rgba(176,141,87,0.4)",
@@ -233,7 +244,14 @@ export default function Hero() {
               fontSize: 13,
             }}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B08D57" strokeWidth="2">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#B08D57"
+              strokeWidth="2"
+            >
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
@@ -259,7 +277,8 @@ export default function Hero() {
                 width: i === currentPhoto ? 24 : 6,
                 height: 6,
                 borderRadius: 3,
-                background: i === currentPhoto ? "#B08D57" : "rgba(176,141,87,0.3)",
+                background:
+                  i === currentPhoto ? "#B08D57" : "rgba(176,141,87,0.3)",
                 border: "none",
                 cursor: "pointer",
                 padding: 0,

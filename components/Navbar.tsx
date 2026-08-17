@@ -27,7 +27,6 @@ export default function Navbar() {
   }, [menuOpen]);
 
   const navLinks = [
-    { href: "#floors", label: t.nav.floors },
     { href: "#gallery", label: t.nav.gallery },
     { href: "#conditions", label: t.nav.conditions },
     { href: "#advantages", label: t.nav.advantages },
@@ -44,7 +43,12 @@ export default function Navbar() {
             alt="Zarafshon Mall"
             width={180}
             height={40}
-            style={{ height: 34, width: "auto", filter: "invert(1) sepia(1) saturate(2) hue-rotate(10deg) brightness(0.85)" }}
+            style={{
+              height: 34,
+              width: "auto",
+              filter:
+                "invert(1) sepia(1) saturate(2) hue-rotate(10deg) brightness(0.85)",
+            }}
           />
         </a>
 
@@ -136,7 +140,11 @@ export default function Navbar() {
               </button>
             ))}
           </div>
-          <a href="#contact" className="navbar-cta" onClick={() => setMenuOpen(false)}>
+          <a
+            href="#contact"
+            className="navbar-cta"
+            onClick={() => setMenuOpen(false)}
+          >
             {t.nav.apply}
           </a>
         </div>

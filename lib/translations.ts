@@ -3,7 +3,6 @@ export type Lang = "uz" | "ru";
 export const translations = {
   uz: {
     nav: {
-      floors: "Qavatlar",
       gallery: "Galereya",
       conditions: "Shartlar",
       advantages: "Afzalliklar",
@@ -26,39 +25,6 @@ export const translations = {
         { value: "2026", label: "Ochilish yili" },
         { value: "1–3", label: "Oy remont kanikuli" },
         { value: "3–5", label: "Yil ijara muddati" },
-      ],
-    },
-    floors: {
-      title: "Qavatlar tuzilishi",
-      subtitle: "Har bir qavatda turli yo'nalishdagi brendlar uchun joy mavjud",
-      items: [
-        {
-          floor: "Podval (−1)",
-          icon: "🛋️",
-          description:
-            "Uy-ro'zg'or, maishiy texnika va jihozlar, gilam va mebel",
-          tags: ["Mebel", "Maishiy texnika", "Gilam"],
-        },
-        {
-          floor: "1-qavat",
-          icon: "🛒",
-          description:
-            "Supermarket, kundalik ehtiyojlar, kosmetika, dorixona, xizmatlar va kafe",
-          tags: ["Supermarket", "Kosmetika", "Dorixona", "Kafe"],
-        },
-        {
-          floor: "2-qavat",
-          icon: "👗",
-          description: "Moda va kiyim-kechak, sport, aksessuarlar",
-          tags: ["Moda", "Sport", "Aksessuarlar"],
-        },
-        {
-          floor: "3-qavat",
-          icon: "🎮",
-          description:
-            "Oilaviy dam olish, food court, bolalar o'yingohlar, VR zona",
-          tags: ["Food Court", "Bolalar o'yingoh", "VR Zona"],
-        },
       ],
     },
     conditions: {
@@ -169,7 +135,6 @@ export const translations = {
 
   ru: {
     nav: {
-      floors: "Этажи",
       gallery: "Галерея",
       conditions: "Условия",
       advantages: "Преимущества",
@@ -192,37 +157,6 @@ export const translations = {
         { value: "2026", label: "Год открытия" },
         { value: "1–3", label: "Мес. арендные каникулы" },
         { value: "3–5", label: "Лет срок аренды" },
-      ],
-    },
-    floors: {
-      title: "Структура этажей",
-      subtitle: "На каждом этаже есть место для брендов разного направления",
-      items: [
-        {
-          floor: "Подвал (−1)",
-          icon: "🛋️",
-          description: "Товары для дома, бытовая техника, ковры и мебель",
-          tags: ["Мебель", "Техника", "Ковры"],
-        },
-        {
-          floor: "1-й этаж",
-          icon: "🛒",
-          description:
-            "Супермаркет, товары повседневного спроса, косметика, аптека, сервисы и кафе",
-          tags: ["Супермаркет", "Косметика", "Аптека", "Кафе"],
-        },
-        {
-          floor: "2-й этаж",
-          icon: "👗",
-          description: "Мода и одежда, спорт, аксессуары",
-          tags: ["Мода", "Спорт", "Аксессуары"],
-        },
-        {
-          floor: "3-й этаж",
-          icon: "🎮",
-          description: "Семейный отдых, фудкорт, детские площадки, VR-зона",
-          tags: ["Фудкорт", "Детская зона", "VR-зона"],
-        },
       ],
     },
     conditions: {
