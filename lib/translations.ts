@@ -11,11 +11,10 @@ export const translations = {
       apply: "Ariza yuborish",
     },
     hero: {
-      badge: "2026-yil sentabr — Grand Opening",
+      badge: "2026-yil oktabr — Grand Opening",
       title: "Zarafshon Mall",
       titleHighlight: "Biz bilan yangi sahifa oching.",
-      subtitle:
-        "Shahardagi eng yirik savdo markazi.",
+      subtitle: "Shahardagi eng yirik savdo markazi.",
       cta: "Hamkorlik taklifi",
       ctaSecondary: "Ko'proq ma'lumot",
       address: "Zarafshon shahri, 13-kichik tuman, 104a",
@@ -31,13 +30,13 @@ export const translations = {
     },
     floors: {
       title: "Qavatlar tuzilishi",
-      subtitle:
-        "Har bir qavatda turli yo'nalishdagi brendlar uchun joy mavjud",
+      subtitle: "Har bir qavatda turli yo'nalishdagi brendlar uchun joy mavjud",
       items: [
         {
           floor: "Podval (−1)",
           icon: "🛋️",
-          description: "Uy-ro'zg'or, maishiy texnika va jihozlar, gilam va mebel",
+          description:
+            "Uy-ro'zg'or, maishiy texnika va jihozlar, gilam va mebel",
           tags: ["Mebel", "Maishiy texnika", "Gilam"],
         },
         {
@@ -156,7 +155,7 @@ export const translations = {
       info: {
         title: "Bog'lanish ma'lumotlari",
         address: "Zarafshon shahri, 13-kichik tuman, 104a",
-        phones: ["+998 99 494-80-88", "+998 93 885-66-06"],
+        phones: ["+998 99 494-80-88", "+998 99 160-88-48"],
         email: "info@zarafshonmall.uz",
         website: "zarafshonmall.uz",
       },
@@ -178,11 +177,10 @@ export const translations = {
       apply: "Подать заявку",
     },
     hero: {
-      badge: "Сентябрь 2026 — Большое открытие",
+      badge: "Октябрь 2026 — Большое открытие",
       title: "Zarafshon Mall",
       titleHighlight: "Откройте новую страницу с нами.",
-      subtitle:
-        "Крупнейший торговый центр города.",
+      subtitle: "Крупнейший торговый центр города.",
       cta: "Предложение о сотрудничестве",
       ctaSecondary: "Узнать больше",
       address: "г. Зарафшан, 13-й микрорайон, 104а",
@@ -301,7 +299,8 @@ export const translations = {
     },
     contact: {
       title: "Начнём сотрудничество",
-      subtitle: "Оставьте заявку — наши специалисты свяжутся с вами в ближайшее время",
+      subtitle:
+        "Оставьте заявку — наши специалисты свяжутся с вами в ближайшее время",
       form: {
         name: "Название компании",
         namePlaceholder: "Название вашей компании",
@@ -320,7 +319,7 @@ export const translations = {
       info: {
         title: "Контактная информация",
         address: "г. Зарафшан, 13-й микрорайон, 104а",
-        phones: ["+998 99 494-80-88", "+998 93 885-66-06"],
+        phones: ["+998 99 494-80-88", "+998 99 160-88-48"],
         email: "info@zarafshonmall.uz",
         website: "zarafshonmall.uz",
       },
